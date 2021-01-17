@@ -1,7 +1,7 @@
 {
   "name": "@openinf/util-object",
-  "version": "1.0.0",
-  "exports": "index.mjs",
+  "version": "1.0.1",
+  "exports": "./index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +16,8 @@
     "url": "https://github.com/openinf/util-types/issues"
   },
   "homepage": "https://github.com/openinf/util-types#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@openinf/util-types": "^1.0.1"
+  }
 }
