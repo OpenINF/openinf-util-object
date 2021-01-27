@@ -55,8 +55,8 @@ export function dict(opt_initial) {
 /**
  * Checks if the given key is a property in the map.
  *
- * @param {T}  obj a map like property.
- * @param {string}  key
+ * @param {T} obj a map like property.
+ * @param {string} key
  * @return {boolean}
  * @template T
  */
@@ -70,7 +70,7 @@ export function hasOwn(obj, key) {
  *
  * @param {Object} obj
  * @param {string} key
- * @return {*}
+ * @return {unknown}
  */
 export function ownProperty(obj, key) {
   if (hasOwn(obj, key)) {
