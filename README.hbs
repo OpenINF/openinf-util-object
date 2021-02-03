@@ -1,0 +1,64 @@
+<h1 align="center">@openinf/util-object</h1>
+
+<p align="center">Common JavaScript Object type-related utilities</p>
+
+<br />
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@openinf/util-object"><img src="https://img.shields.io/npm/v/@openinf/util-object?style=plastic" alt="view on npm" /></a>
+  <img src="https://img.shields.io/github/languages/top/openinf/util-types?color=blue&style=plastic" />
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/openinf/openinf.github.io?color=blue&style=plastic" alt="License: MIT" /></a>
+</p>
+
+<br />
+
+_The high-level goal of `@openinf/util-object` is to serve as a Node.js
+package containing utilities for **common JavaScript Object type-related
+utilities** primarily enabling users to perform comparisons and analyze object
+contents. As is the case with any software project in continuous
+development, omissions and errors may exist, for which contributions are
+welcome._
+
+<br />
+
+---
+
+<br />
+
+## Installation
+
+`@openinf/util-object` runs on Node.js and is available via `npm`.
+
+```bash
+npm install @openinf/util-object
+```
+
+## Usage
+
+```ts
+import { hasOwn } from '@openinf/util-object';
+
+export class GhFileImporter {
+  constructor(options: GhFileImporterOptions) {
+    if (!hasOwn(options, 'destDir')) {
+      throw new MissingOptionError('destDir');
+    }
+  }
+}
+```
+
+<br />
+
+---
+
+<br />
+
+{{>main}}
+
+<br />
+
+---
+
+<br />
+
+&copy; OpenINF
