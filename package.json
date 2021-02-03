@@ -10,14 +10,19 @@
     "type": "git",
     "url": "git+https://github.com/openinf/util-types.git"
   },
-  "keywords": [],
+  "keywords": [
+    "JavaScript",
+    "Object",
+    "type",
+    "utilities"
+  ],
   "author": "the OpenINF authors",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/openinf/util-types/issues"
   },
   "homepage": "https://github.com/openinf/util-types#readme",
-  "description": "",
+  "description": "Common JavaScript Object type-related utilities ",
   "dependencies": {
     "@openinf/util-types": "^1.2.0"
   }
