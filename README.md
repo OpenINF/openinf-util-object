@@ -73,6 +73,12 @@ Otherwise, returns undefined.</p>
 <dd></dd>
 <dt><a href="#objectsEqualShallow">objectsEqualShallow(o1, o2)</a> ⇒ <code>boolean</code></dt>
 <dd></dd>
+<dt><a href="#memo">memo(obj, prop, factory)</a> ⇒ <code>R</code></dt>
+<dd><p>Takes an object, a property name, and a factory function. If the value of
+the property is undefined, it generates a value with the factory function,
+updates the object originally passed, and returns the value that was returned
+by the factory function.</p>
+</dd>
 </dl>
 
 <a name="map"></a>
@@ -154,6 +160,22 @@ Note: Only nested objects are deep-merged, primitives and arrays are not.
 | --- | --- |
 | o1 | <code>!Record.&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> | 
 | o2 | <code>!Record.&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> | 
+
+<a name="memo"></a>
+
+## memo(obj, prop, factory) ⇒ <code>R</code>
+Takes an object, a property name, and a factory function. If the value of
+the property is undefined, it generates a value with the factory function,
+updates the object originally passed, and returns the value that was returned
+by the factory function.
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| obj | <code>T</code> | 
+| prop | <code>string</code> | 
+| factory | <code>function</code> | 
 
 
 <br />

@@ -49,3 +49,16 @@ export declare function omit(o: Record<string, number | RegExp>, props: Array<st
  * @returns {boolean}
  */
 export declare function objectsEqualShallow(o1: (Record<string, number | RegExp> | null | undefined), o2: (Record<string, number | RegExp> | null | undefined)): boolean;
+/**
+ * Takes an object, a property name, and a factory function. If the value of
+ * the property is undefined, it generates a value with the factory function,
+ * updates the object originally passed, and returns the value that was returned
+ * by the factory function.
+ *
+ * @param {T} obj
+ * @param {string} prop
+ * @param {function(T, string):R} factory
+ * @returns {R}
+ * @template T,R
+ */
+export declare function memo<T, P extends keyof T>(obj: T, prop: P, factory: (arg0: T, arg1: P) => T[P]): T[P];

@@ -16,7 +16,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.objectsEqualShallow = exports.omit = exports.deepMerge = exports.ownProperty = exports.hasOwn = exports.map = void 0;
+exports.memo = exports.objectsEqualShallow = exports.omit = exports.deepMerge = exports.ownProperty = exports.hasOwn = exports.map = void 0;
 const util_types_1 = require("@openinf/util-types");
 /* @const */
 const _hasOwn = Object.prototype.hasOwnProperty;
@@ -147,3 +147,24 @@ function objectsEqualShallow(o1, o2) {
     return true;
 }
 exports.objectsEqualShallow = objectsEqualShallow;
+/**
+ * Takes an object, a property name, and a factory function. If the value of
+ * the property is undefined, it generates a value with the factory function,
+ * updates the object originally passed, and returns the value that was returned
+ * by the factory function.
+ *
+ * @param {T} obj
+ * @param {string} prop
+ * @param {function(T, string):R} factory
+ * @returns {R}
+ * @template T,R
+ */
+function memo(obj, prop, factory) {
+    let result = obj[prop];
+    if (result === undefined) {
+        result = factory(obj, prop);
+        obj[prop] = result;
+    }
+    return result;
+}
+exports.memo = memo;
