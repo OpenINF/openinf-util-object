@@ -15,11 +15,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { isObject } from '@openinf/util-types';
+
 export interface Object {
   hasOwnProperty<T>(this: T, v: any): v is keyof T
 }
-
-import { isObject } from '@openinf/util-types';
 
 /* @const */
 const _hasOwn = Object.prototype.hasOwnProperty;
@@ -28,7 +28,7 @@ const _hasOwn = Object.prototype.hasOwnProperty;
  * Returns a map-like object. If `opt_initial` is provided, copies its own
  * properties into the newly created object.
  * @param {T=} opt_initial This should typically be an object literal.
- * @return {T}
+ * @returns {T}
  * @template T
  */
 export function map<T>(opt_initial: (T | undefined)) {
@@ -41,10 +41,9 @@ export function map<T>(opt_initial: (T | undefined)) {
 
 /**
  * Checks if the given key is a property in the map.
- *
  * @param {T} obj a map like property.
  * @param {string} key
- * @return {boolean}
+ * @returns {boolean}
  * @template T
  */
 export function hasOwn<T>(obj: T, key: string) {
@@ -54,10 +53,9 @@ export function hasOwn<T>(obj: T, key: string) {
 /**
  * Returns obj[key] iff key is obj's own property (is not inherited).
  * Otherwise, returns undefined.
- *
  * @param {Record<string, number | RegExp>} obj
  * @param {string} key
- * @return {unknown}
+ * @returns {unknown}
  */
 export function ownProperty(obj: Record<string, number | RegExp>, key: string) {
   if (hasOwn(obj, key)) {
@@ -80,7 +78,7 @@ interface ITargetSourceDepth {
  * @param {!Object} source
  * @param {number} depth The maximum merge depth. If exceeded, Object.assign
  *                       will be used instead.
- * @return {!Object}
+ * @returns {!Object}
  * @throws {Error} If source contains a circular reference.
  * Note: Only nested objects are deep-merged, primitives and arrays are not.
  */
@@ -144,24 +142,22 @@ export function omit(o: Record<string, number | RegExp>, props: Array<string>):
  * @param {!Record<string, number | RegExp> | null | undefined} o2
  * @returns {boolean}
  */
-export function objectsEqualShallow(o1: (Record<string, number | RegExp> | null | undefined),
+export function objectsEqualShallow(
+  o1: (Record<string, number | RegExp> | null | undefined),
   o2: (Record<string, number | RegExp> | null | undefined)): boolean {
   if (o1 == null || o2 == null) {
     // Null is only equal to null, and undefined to undefined.
     return o1 === o2;
   }
-
   for (const k in o1) {
     if (o1[k] !== o2[k]) {
       return false;
     }
   }
-
   for (const k in o2) {
     if (o2[k] !== o1[k]) {
       return false;
     }
   }
-
   return true;
 }

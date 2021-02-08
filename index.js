@@ -24,7 +24,7 @@ const _hasOwn = Object.prototype.hasOwnProperty;
  * Returns a map-like object. If `opt_initial` is provided, copies its own
  * properties into the newly created object.
  * @param {T=} opt_initial This should typically be an object literal.
- * @return {T}
+ * @returns {T}
  * @template T
  */
 function map(opt_initial) {
@@ -37,10 +37,9 @@ function map(opt_initial) {
 exports.map = map;
 /**
  * Checks if the given key is a property in the map.
- *
  * @param {T} obj a map like property.
  * @param {string} key
- * @return {boolean}
+ * @returns {boolean}
  * @template T
  */
 function hasOwn(obj, key) {
@@ -50,10 +49,9 @@ exports.hasOwn = hasOwn;
 /**
  * Returns obj[key] iff key is obj's own property (is not inherited).
  * Otherwise, returns undefined.
- *
  * @param {Record<string, number | RegExp>} obj
  * @param {string} key
- * @return {unknown}
+ * @returns {unknown}
  */
 function ownProperty(obj, key) {
     if (hasOwn(obj, key)) {
@@ -71,7 +69,7 @@ exports.ownProperty = ownProperty;
  * @param {!Object} source
  * @param {number} depth The maximum merge depth. If exceeded, Object.assign
  *                       will be used instead.
- * @return {!Object}
+ * @returns {!Object}
  * @throws {Error} If source contains a circular reference.
  * Note: Only nested objects are deep-merged, primitives and arrays are not.
  */
