@@ -1,6 +1,6 @@
 {
   "name": "@openinf/util-object",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./index.js",
   "types": "./index.d.ts",
   "scripts": {
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/openinf/util-types#readme",
   "description": "Common JavaScript Object type-related utilities ",
   "devDependencies": {
+    "jasmine": "^3.6.4",
     "jsdoc-to-markdown": "^6.0.1",
     "typescript": "^4.1.3"
   },
