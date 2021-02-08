@@ -161,3 +161,28 @@ export function objectsEqualShallow(
   }
   return true;
 }
+
+/**
+ * Takes an object, a property name, and a factory function. If the value of
+ * the property is undefined, it generates a value with the factory function,
+ * updates the object originally passed, and returns the value that was returned
+ * by the factory function.
+ *
+ * @param {T} obj
+ * @param {string} prop
+ * @param {function(T, string):R} factory
+ * @returns {R}
+ * @template T,R
+ */
+export function memo<T, P extends keyof T>(
+  obj: T,
+  prop: P,
+  factory: (arg0: T, arg1: P) => T[P]
+): T[P] {
+  let result = obj[prop];
+  if (result === undefined) {
+    result = factory(obj, prop);
+    obj[prop] = result;
+  }
+  return result;
+}

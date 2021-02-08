@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/openinf/util-types#readme",
   "description": "Common JavaScript Object type-related utilities ",
-  "dependencies": {
-    "@openinf/util-types": "^1.2.0"
-  },
   "devDependencies": {
     "jsdoc-to-markdown": "^6.0.1",
     "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "@openinf/util-types": "^2.0.2"
   }
 }
