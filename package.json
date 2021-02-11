@@ -6,7 +6,8 @@
   "scripts": {
     "compile": "npm run compile-src && npm run compile-doc",
     "compile-src": "tsc --project ./",
-    "compile-doc": "jsdoc2md --template README.hbs --files index.js > ./README.md"
+    "compile-doc": "jsdoc2md --template README.hbs --files index.js > ./README.md",
+    "test": "npx jasmine"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/openinf/util-types#readme",
   "description": "Common JavaScript Object type-related utilities ",
   "devDependencies": {
+    "chai": "^4.3.0",
     "jasmine": "^3.6.4",
     "jsdoc-to-markdown": "^6.0.1",
     "typescript": "^4.1.3"
