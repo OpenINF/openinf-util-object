@@ -28,7 +28,7 @@
   "description": "Common JavaScript Object type-related utilities ",
   "devDependencies": {
     "chai": "4.3.4",
-    "jasmine": "3.10.0",
+    "jasmine": "4.0.1",
     "jsdoc-to-markdown": "7.1.0",
     "typescript": "4.5.4"
   },
