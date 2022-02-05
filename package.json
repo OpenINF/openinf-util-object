@@ -30,7 +30,7 @@
     "chai": "4.3.4",
     "jasmine": "4.0.2",
     "jsdoc-to-markdown": "7.1.1",
-    "typescript": "4.5.4"
+    "typescript": "4.5.5"
   },
   "dependencies": {
     "@openinf/util-types": "^2.0.2"
