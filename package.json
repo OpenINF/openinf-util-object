@@ -33,6 +33,6 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@openinf/util-types": "^2.1.3"
+    "@openinf/util-types": "2.1.3"
   }
 }
