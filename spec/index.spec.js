@@ -16,75 +16,75 @@
 // limitations under the License.
 //
 
-const object = require('../index.js');
-const { expect } = require('chai');
+const object = require("../index.js");
+const { expect } = require("chai");
 
-describe('Object', () => {
-  it('hasOwn', () => {
-    expect(object.hasOwn(object.map(), 'a')).to.be.false;
-    expect(object.hasOwn(object.map({'a': 'b'}), 'b')).to.be.false;
-    expect(object.hasOwn(object.map({'a': {}}), 'a')).to.be.true;
+describe("Object", () => {
+  it("hasOwn", () => {
+    expect(object.hasOwn(object.map(), "a")).to.be.false;
+    expect(object.hasOwn(object.map({ a: "b" }), "b")).to.be.false;
+    expect(object.hasOwn(object.map({ a: {} }), "a")).to.be.true;
   });
 
-  it('ownProperty', () => {
-    expect(object.ownProperty({}, '__proto__')).to.be.undefined;
-    expect(object.ownProperty({}, 'constructor')).to.be.undefined;
-    expect(object.ownProperty({foo: 'bar'}, 'foo')).to.equal('bar');
+  it("ownProperty", () => {
+    expect(object.ownProperty({}, "__proto__")).to.be.undefined;
+    expect(object.ownProperty({}, "constructor")).to.be.undefined;
+    expect(object.ownProperty({ foo: "bar" }, "foo")).to.equal("bar");
   });
 
-  describe('map', () => {
-    it('should make map like objects', () => {
+  describe("map", () => {
+    it("should make map like objects", () => {
       expect(object.map().prototype).to.be.undefined;
       expect(object.map().__proto__).to.be.undefined;
       expect(object.map().toString).to.be.undefined;
     });
 
-    it('should make map like objects from objects', () => {
+    it("should make map like objects from objects", () => {
       expect(object.map({}).prototype).to.be.undefined;
       expect(object.map({}).__proto__).to.be.undefined;
       expect(object.map({}).toString).to.be.undefined;
-      expect(object.map({foo: 'bar'}).foo).to.equal('bar');
-      const obj = {foo: 'bar', test: 1};
+      expect(object.map({ foo: "bar" }).foo).to.equal("bar");
+      const obj = { foo: "bar", test: 1 };
       expect(object.map(obj).test).to.equal(1);
       expect(object.map(obj)).to.not.equal(obj);
     });
   });
 
-  describe('deepMerge', () => {
-    it('should deep merge objects', () => {
+  describe("deepMerge", () => {
+    it("should deep merge objects", () => {
       const destObject = {
-        a: 'hello world',
-        b: 'goodbye world',
+        a: "hello world",
+        b: "goodbye world",
         c: {
-          d: 'foo',
+          d: "foo",
           e: {
-            f: 'bar',
+            f: "bar",
           },
         },
       };
       const fromObject = {
-        b: 'hello world',
+        b: "hello world",
         c: {
-          d: 'bah',
+          d: "bah",
           e: {
-            g: 'baz',
+            g: "baz",
           },
         },
       };
       expect(object.deepMerge(destObject, fromObject)).to.deep.equal({
-        a: 'hello world',
-        b: 'hello world',
+        a: "hello world",
+        b: "hello world",
         c: {
-          d: 'bah',
+          d: "bah",
           e: {
-            f: 'bar',
-            g: 'baz',
+            f: "bar",
+            g: "baz",
           },
         },
       });
     });
 
-    it('should NOT deep merge arrays', () => {
+    it("should NOT deep merge arrays", () => {
       const destObject = {
         a: [1, 2, 3, 4, 5],
         b: {
@@ -93,24 +93,24 @@ describe('Object', () => {
       };
       const fromObject = {
         b: {
-          c: ['h', 'i'],
+          c: ["h", "i"],
         },
       };
       expect(object.deepMerge(destObject, fromObject)).to.deep.equal({
         a: [1, 2, 3, 4, 5],
         b: {
-          c: ['h', 'i'],
+          c: ["h", "i"],
         },
       });
     });
 
-    it('should use Object.assign if merged object exceeds max depth', () => {
+    it("should use Object.assign if merged object exceeds max depth", () => {
       const destObject = {
         a: {
           b: {
             c: {
-              d: 'e',
-              f: 'g',
+              d: "e",
+              f: "g",
             },
           },
         },
@@ -119,8 +119,8 @@ describe('Object', () => {
         a: {
           b: {
             c: {
-              d: 'z',
-              h: 'i',
+              d: "z",
+              h: "i",
             },
           },
         },
@@ -129,15 +129,15 @@ describe('Object', () => {
         a: {
           b: {
             c: {
-              d: 'z',
-              h: 'i',
+              d: "z",
+              h: "i",
             },
           },
         },
       });
     });
 
-    it('should handle destination objects with circular references', () => {
+    it("should handle destination objects with circular references", () => {
       const destObject = {};
       destObject.a = destObject;
       const fromObject = {};
@@ -147,7 +147,7 @@ describe('Object', () => {
       });
     });
 
-    it('should throw on source objects with circular references', () => {
+    it("should throw on source objects with circular references", () => {
       const destObject = {};
       destObject.a = {};
       const fromObject = {};
@@ -157,51 +157,51 @@ describe('Object', () => {
       );
     });
 
-    it('should merge null and undefined correctly', () => {
+    it("should merge null and undefined correctly", () => {
       const destObject = {
         a: null,
         b: {
-          c: 'd',
+          c: "d",
         },
         e: undefined,
         f: {
-          g: 'h',
+          g: "h",
         },
       };
       const fromObject = {
         a: {
-          i: 'j',
+          i: "j",
         },
         b: null,
         e: {
-          k: 'm',
+          k: "m",
         },
         f: undefined,
       };
       expect(object.deepMerge(destObject, fromObject)).to.deep.equal({
         a: {
-          i: 'j',
+          i: "j",
         },
         b: null,
         e: {
-          k: 'm',
+          k: "m",
         },
         f: undefined,
       });
     });
 
-    it('should short circuit when merging the same object', () => {
+    it("should short circuit when merging the same object", () => {
       const destObject = {
         set a(val) {
-          throw new Error('deep merge tried to merge object with itself');
+          throw new Error("deep merge tried to merge object with itself");
         },
       };
       expect(() => object.deepMerge(destObject, destObject)).to.not.throw();
     });
   });
 
-  describe('memo', () => {
-    const PROP = '_a';
+  describe("memo", () => {
+    const PROP = "_a";
 
     let counter;
     let obj;
@@ -209,7 +209,7 @@ describe('Object', () => {
     beforeEach(() => {
       counter = 0;
       obj = {
-        name: 'OBJ',
+        name: "OBJ",
       };
     });
 
@@ -218,17 +218,17 @@ describe('Object', () => {
       return `${obj.name}:${id}`;
     }
 
-    it('should allocate object on first and first use only', () => {
+    it("should allocate object on first and first use only", () => {
       // First access: allocate and reuse.
-      expect(object.memo(obj, PROP, factory)).to.equal('OBJ:1');
-      expect(object.memo(obj, PROP, factory)).to.equal('OBJ:1');
+      expect(object.memo(obj, PROP, factory)).to.equal("OBJ:1");
+      expect(object.memo(obj, PROP, factory)).to.equal("OBJ:1");
 
       // Same object, different property: allocate again.
-      expect(object.memo(obj, PROP + '2', factory)).to.equal('OBJ:2');
-      expect(object.memo(obj, PROP + '2', factory)).to.equal('OBJ:2');
+      expect(object.memo(obj, PROP + "2", factory)).to.equal("OBJ:2");
+      expect(object.memo(obj, PROP + "2", factory)).to.equal("OBJ:2");
 
       // A new object: allocate again.
-      expect(object.memo({name: 'OBJ'}, PROP, factory)).to.equal('OBJ:3');
+      expect(object.memo({ name: "OBJ" }, PROP, factory)).to.equal("OBJ:3");
     });
   });
 });

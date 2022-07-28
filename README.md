@@ -35,12 +35,12 @@ npm install @openinf/util-object
 ## Usage
 
 ```ts
-import { hasOwn } from '@openinf/util-object';
+import { hasOwn } from "@openinf/util-object";
 
 export class GhFileImporter {
   constructor(options: GhFileImporterOptions) {
-    if (!hasOwn(options, 'destDir')) {
-      throw new MissingOptionError('destDir');
+    if (!hasOwn(options, "destDir")) {
+      throw new MissingOptionError("destDir");
     }
   }
 }
@@ -84,99 +84,105 @@ by the factory function.</p>
 <a name="map"></a>
 
 ## map([opt_initial]) ⇒ <code>T</code>
+
 Returns a map-like object. If `opt_initial` is provided, copies its own
 properties into the newly created object.
 
-**Kind**: global function  
+**Kind**: global function
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param         | Type           | Description                                 |
+| ------------- | -------------- | ------------------------------------------- |
 | [opt_initial] | <code>T</code> | This should typically be an object literal. |
 
 <a name="hasOwn"></a>
 
 ## hasOwn(obj, key) ⇒ <code>boolean</code>
+
 Checks if the given key is a property in the map.
 
-**Kind**: global function  
+**Kind**: global function
 
-| Param | Type | Description |
-| --- | --- | --- |
-| obj | <code>T</code> | a map like property. |
-| key | <code>string</code> |  |
+| Param | Type                | Description          |
+| ----- | ------------------- | -------------------- |
+| obj   | <code>T</code>      | a map like property. |
+| key   | <code>string</code> |                      |
 
 <a name="ownProperty"></a>
 
 ## ownProperty(obj, key) ⇒ <code>unknown</code>
+
 Returns obj[key] iff key is obj's own property (is not inherited).
 Otherwise, returns undefined.
 
-**Kind**: global function  
+**Kind**: global function
 
-| Param | Type |
-| --- | --- |
-| obj | <code>Record.&lt;string, (number\|RegExp)&gt;</code> | 
-| key | <code>string</code> | 
+| Param | Type                                                 |
+| ----- | ---------------------------------------------------- |
+| obj   | <code>Record.&lt;string, (number\|RegExp)&gt;</code> |
+| key   | <code>string</code>                                  |
 
 <a name="deepMerge"></a>
 
 ## deepMerge(target, source, depth) ⇒ <code>Object</code>
+
 Deep merges source into target.
 
 **Kind**: global function  
 **Throws**:
 
 - <code>Error</code> If source contains a circular reference.
-Note: Only nested objects are deep-merged, primitives and arrays are not.
+  Note: Only nested objects are deep-merged, primitives and arrays are not.
 
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| target | <code>Object</code> |  |  |
-| source | <code>Object</code> |  |  |
-| depth | <code>number</code> | <code>10</code> | The maximum merge depth. If exceeded, Object.assign                       will be used instead. |
+| Param  | Type                | Default         | Description                                                               |
+| ------ | ------------------- | --------------- | ------------------------------------------------------------------------- |
+| target | <code>Object</code> |                 |                                                                           |
+| source | <code>Object</code> |                 |                                                                           |
+| depth  | <code>number</code> | <code>10</code> | The maximum merge depth. If exceeded, Object.assign will be used instead. |
 
 <a name="deepMerge..queue"></a>
 
 ### deepMerge~queue : <code>Array.&lt;ITargetSourceDepth&gt;</code>
+
 **Kind**: inner constant of [<code>deepMerge</code>](#deepMerge)  
 <a name="omit"></a>
 
 ## omit(o, props) ⇒ <code>Record.&lt;string, (number\|RegExp)&gt;</code>
-**Kind**: global function  
-**Returns**: <code>Record.&lt;string, (number\|RegExp)&gt;</code> - An object with the given properties removed.  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| o | <code>Record.&lt;string, (number\|RegExp)&gt;</code> | An object to remove properties from. |
-| props | <code>Array.&lt;string&gt;</code> | A list of properties to remove from the Object. |
+**Kind**: global function  
+**Returns**: <code>Record.&lt;string, (number\|RegExp)&gt;</code> - An object with the given properties removed.
+
+| Param | Type                                                 | Description                                     |
+| ----- | ---------------------------------------------------- | ----------------------------------------------- |
+| o     | <code>Record.&lt;string, (number\|RegExp)&gt;</code> | An object to remove properties from.            |
+| props | <code>Array.&lt;string&gt;</code>                    | A list of properties to remove from the Object. |
 
 <a name="objectsEqualShallow"></a>
 
 ## objectsEqualShallow(o1, o2) ⇒ <code>boolean</code>
-**Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| o1 | <code>!Record.&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> | 
-| o2 | <code>!Record.&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> | 
+**Kind**: global function
+
+| Param | Type                                                                                                 |
+| ----- | ---------------------------------------------------------------------------------------------------- |
+| o1    | <code>!Record.&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> |
+| o2    | <code>!Record.&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> |
 
 <a name="memo"></a>
 
 ## memo(obj, prop, factory) ⇒ <code>R</code>
+
 Takes an object, a property name, and a factory function. If the value of
 the property is undefined, it generates a value with the factory function,
 updates the object originally passed, and returns the value that was returned
 by the factory function.
 
-**Kind**: global function  
+**Kind**: global function
 
-| Param | Type |
-| --- | --- |
-| obj | <code>T</code> | 
-| prop | <code>string</code> | 
-| factory | <code>function</code> | 
-
+| Param   | Type                  |
+| ------- | --------------------- |
+| obj     | <code>T</code>        |
+| prop    | <code>string</code>   |
+| factory | <code>function</code> |
 
 <br />
 

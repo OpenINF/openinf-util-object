@@ -15,10 +15,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { isObject } from '@openinf/util-types';
+import { isObject } from "@openinf/util-types";
 
 export interface Object {
-  hasOwnProperty<T>(this: T, v: any): v is keyof T
+  hasOwnProperty<T>(this: T, v: any): v is keyof T;
 }
 
 /* @const */
@@ -31,7 +31,7 @@ const _hasOwn = Object.prototype.hasOwnProperty;
  * @returns {T}
  * @template T
  */
-export function map<T>(opt_initial: (T | undefined)) {
+export function map<T>(opt_initial: T | undefined) {
   const obj = Object.create(null);
   if (opt_initial) {
     Object.assign(obj, opt_initial);
@@ -82,20 +82,19 @@ interface ITargetSourceDepth {
  * @throws {Error} If source contains a circular reference.
  * Note: Only nested objects are deep-merged, primitives and arrays are not.
  */
-export function deepMerge(target: Object,
-  source: Object, depth = 10):Object {
+export function deepMerge(target: Object, source: Object, depth = 10): Object {
   // Keep track of seen objects to detect recursive references.
   const seen: Array<Object> = [];
 
   /** @type {!Array<ITargetSourceDepth>} */
   const queue: Array<ITargetSourceDepth> = [];
-  queue.push({t: target, s: source, d: 0});
+  queue.push({ t: target, s: source, d: 0 });
 
   // BFS to ensure objects don't have recursive references at shallower depths.
   while (queue.length > 0) {
-    const {t, s, d} = map(queue.shift());
+    const { t, s, d } = map(queue.shift());
     if (seen.includes(s)) {
-      throw new Error('Source object has a circular reference.');
+      throw new Error("Source object has a circular reference.");
     }
     seen.push(s);
     if (t === s) {
@@ -112,7 +111,7 @@ export function deepMerge(target: Object,
       if (hasOwn(t, key)) {
         const oldValue = t[key];
         if (isObject(newValue) && isObject(oldValue)) {
-          queue.push({t: oldValue, s: newValue, d: d + 1});
+          queue.push({ t: oldValue, s: newValue, d: d + 1 });
           return;
         }
       }
@@ -127,8 +126,10 @@ export function deepMerge(target: Object,
  * @param {!Array<string>} props A list of properties to remove from the Object.
  * @returns {!Record<string, number | RegExp>} An object with the given properties removed.
  */
-export function omit(o: Record<string, number | RegExp>, props: Array<string>):
-  Record<string, number | RegExp> {
+export function omit(
+  o: Record<string, number | RegExp>,
+  props: Array<string>
+): Record<string, number | RegExp> {
   return Object.keys(o).reduce((acc: Record<string, number | RegExp>, key) => {
     if (!props.includes(key)) {
       acc[key] = o[key];
@@ -143,8 +144,9 @@ export function omit(o: Record<string, number | RegExp>, props: Array<string>):
  * @returns {boolean}
  */
 export function objectsEqualShallow(
-  o1: (Record<string, number | RegExp> | null | undefined),
-  o2: (Record<string, number | RegExp> | null | undefined)): boolean {
+  o1: Record<string, number | RegExp> | null | undefined,
+  o2: Record<string, number | RegExp> | null | undefined
+): boolean {
   if (o1 == null || o2 == null) {
     // Null is only equal to null, and undefined to undefined.
     return o1 === o2;
