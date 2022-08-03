@@ -1,5 +1,5 @@
 export interface Object {
-    hasOwnProperty<T>(this: T, v: any): v is keyof T;
+  hasOwnProperty<T>(this: T, v: any): v is keyof T;
 }
 /**
  * Returns a map-like object. If `opt_initial` is provided, copies its own
@@ -8,7 +8,7 @@ export interface Object {
  * @returns {T}
  * @template T
  */
-export declare function map<T>(opt_initial: (T | undefined)): any;
+export declare function map<T>(opt_initial: T | undefined): any;
 /**
  * Checks if the given key is a property in the map.
  * @param {T} obj a map like property.
@@ -24,7 +24,10 @@ export declare function hasOwn<T>(obj: T, key: string): boolean;
  * @param {string} key
  * @returns {unknown}
  */
-export declare function ownProperty(obj: Record<string, number | RegExp>, key: string): number | RegExp | undefined;
+export declare function ownProperty(
+  obj: Record<string, number | RegExp>,
+  key: string
+): number | RegExp | undefined;
 /**
  * Deep merges source into target.
  *
@@ -36,19 +39,29 @@ export declare function ownProperty(obj: Record<string, number | RegExp>, key: s
  * @throws {Error} If source contains a circular reference.
  * Note: Only nested objects are deep-merged, primitives and arrays are not.
  */
-export declare function deepMerge(target: Object, source: Object, depth?: number): Object;
+export declare function deepMerge(
+  target: Object,
+  source: Object,
+  depth?: number
+): Object;
 /**
  * @param {!Record<string, number | RegExp>} o An object to remove properties from.
  * @param {!Array<string>} props A list of properties to remove from the Object.
  * @returns {!Record<string, number | RegExp>} An object with the given properties removed.
  */
-export declare function omit(o: Record<string, number | RegExp>, props: Array<string>): Record<string, number | RegExp>;
+export declare function omit(
+  o: Record<string, number | RegExp>,
+  props: Array<string>
+): Record<string, number | RegExp>;
 /**
  * @param {!Record<string, number | RegExp> | null | undefined} o1
  * @param {!Record<string, number | RegExp> | null | undefined} o2
  * @returns {boolean}
  */
-export declare function objectsEqualShallow(o1: (Record<string, number | RegExp> | null | undefined), o2: (Record<string, number | RegExp> | null | undefined)): boolean;
+export declare function objectsEqualShallow(
+  o1: Record<string, number | RegExp> | null | undefined,
+  o2: Record<string, number | RegExp> | null | undefined
+): boolean;
 /**
  * Takes an object, a property name, and a factory function. If the value of
  * the property is undefined, it generates a value with the factory function,
@@ -61,4 +74,8 @@ export declare function objectsEqualShallow(o1: (Record<string, number | RegExp>
  * @returns {R}
  * @template T,R
  */
-export declare function memo<T, P extends keyof T>(obj: T, prop: P, factory: (arg0: T, arg1: P) => T[P]): T[P];
+export declare function memo<T, P extends keyof T>(
+  obj: T,
+  prop: P,
+  factory: (arg0: T, arg1: P) => T[P]
+): T[P];
