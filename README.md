@@ -35,12 +35,12 @@ npm install @openinf/util-object
 ## Usage
 
 ```ts
-import { hasOwn } from "@openinf/util-object";
+import { hasOwn } from '@openinf/util-object';
 
 export class GhFileImporter {
   constructor(options: GhFileImporterOptions) {
-    if (!hasOwn(options, "destDir")) {
-      throw new MissingOptionError("destDir");
+    if (!hasOwn(options, 'destDir')) {
+      throw new MissingOptionError('destDir');
     }
   }
 }
@@ -111,8 +111,8 @@ Checks if the given key is a property in the map.
 
 ## ownProperty(obj, key) ⇒ <code>unknown</code>
 
-Returns obj[key] iff key is obj's own property (is not inherited).
-Otherwise, returns undefined.
+Returns obj[key] iff key is obj's own property (is not inherited). Otherwise,
+returns undefined.
 
 **Kind**: global function
 
@@ -130,8 +130,8 @@ Deep merges source into target.
 **Kind**: global function  
 **Throws**:
 
-- <code>Error</code> If source contains a circular reference.
-  Note: Only nested objects are deep-merged, primitives and arrays are not.
+- <code>Error</code> If source contains a circular reference. Note: Only nested
+  objects are deep-merged, primitives and arrays are not.
 
 | Param  | Type                | Default         | Description                                                               |
 | ------ | ------------------- | --------------- | ------------------------------------------------------------------------- |
@@ -149,7 +149,8 @@ Deep merges source into target.
 ## omit(o, props) ⇒ <code>Record.&lt;string, (number\|RegExp)&gt;</code>
 
 **Kind**: global function  
-**Returns**: <code>Record.&lt;string, (number\|RegExp)&gt;</code> - An object with the given properties removed.
+**Returns**: <code>Record.&lt;string, (number\|RegExp)&gt;</code> - An object
+with the given properties removed.
 
 | Param | Type                                                 | Description                                     |
 | ----- | ---------------------------------------------------- | ----------------------------------------------- |
@@ -171,10 +172,10 @@ Deep merges source into target.
 
 ## memo(obj, prop, factory) ⇒ <code>R</code>
 
-Takes an object, a property name, and a factory function. If the value of
-the property is undefined, it generates a value with the factory function,
-updates the object originally passed, and returns the value that was returned
-by the factory function.
+Takes an object, a property name, and a factory function. If the value of the
+property is undefined, it generates a value with the factory function, updates
+the object originally passed, and returns the value that was returned by the
+factory function.
 
 **Kind**: global function
 
