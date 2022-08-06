@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { isObject } from "@openinf/util-types";
+import { isObject } from '@openinf/util-types';
 
 export interface Object {
   hasOwnProperty<T>(this: T, v: any): v is keyof T;
@@ -94,7 +94,7 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
   while (queue.length > 0) {
     const { t, s, d } = map(queue.shift());
     if (seen.includes(s)) {
-      throw new Error("Source object has a circular reference.");
+      throw new Error('Source object has a circular reference.');
     }
     seen.push(s);
     if (t === s) {
