@@ -10,12 +10,7 @@
     "test": "npx jasmine"
   },
   "repository": "openinf/util-object",
-  "keywords": [
-    "JavaScript",
-    "Object",
-    "type",
-    "utilities"
-  ],
+  "keywords": ["JavaScript", "Object", "type", "utilities"],
   "author": "The OpenINF Authors",
   "license": "MIT",
   "bugs": "https://github.com/openinf/util-object/issues",
@@ -26,7 +21,7 @@
     "@typescript-eslint/eslint-plugin": "5.32.0",
     "@typescript-eslint/parser": "5.32.0",
     "chai": "4.3.6",
-    "eslint": "8.21.0",
+    "eslint": "8.22.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-import-resolver-node": "0.3.6",
     "eslint-plugin-etc": "2.0.2",
