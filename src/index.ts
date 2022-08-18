@@ -122,23 +122,6 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
 }
 
 /**
- * @param {!Record<string, number | RegExp>} o An object to remove properties from.
- * @param {!Array<string>} props A list of properties to remove from the Object.
- * @returns {!Record<string, number | RegExp>} An object with the given properties removed.
- */
-export function omit(
-  o: Record<string, number | RegExp>,
-  props: Array<string>
-): Record<string, number | RegExp> {
-  return Object.keys(o).reduce((acc: Record<string, number | RegExp>, key) => {
-    if (!props.includes(key)) {
-      acc[key] = o[key];
-    }
-    return acc;
-  }, {});
-}
-
-/**
  * @param {!Record<string, number | RegExp> | null | undefined} o1
  * @param {!Record<string, number | RegExp> | null | undefined} o2
  * @returns {boolean}
