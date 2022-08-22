@@ -17,6 +17,7 @@
     "paths": {},
     "pretty": true,
     "resolveJsonModule": true,
+    "rootDir": "src",
     "rootDirs": ["src", "lib"],
     "skipLibCheck": true,
     "sourceMap": true,
