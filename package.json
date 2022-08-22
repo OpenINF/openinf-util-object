@@ -4,7 +4,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "compile": "npm run compile-src && npm run compile-doc",
+    "prepare": "npm run compile-src && npm run compile-doc",
     "compile-src": "tsc --project ./",
     "compile-doc": "jsdoc2md --template README.hbs --files lib/index.js > ./README.md",
     "test": "npx jasmine"
