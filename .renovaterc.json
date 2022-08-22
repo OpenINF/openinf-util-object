@@ -10,7 +10,6 @@
   "platformCommit": true,
   "rangeStrategy": "pin",
   "semanticCommits": "enabled",
-  "labels": ["dependencies"],
   "commitMessageAction": "bump",
   "commitMessageTopic": "{{depName}}",
   "packageRules": [
@@ -23,7 +22,7 @@
         {
           "matchDepTypes": ["dependencies"],
           "commitMessagePrefix": "deps:",
-          "labels": ["deps-production"]
+          "labels": ["dependencies", "deps-production"]
         }
       ]
     },
@@ -32,7 +31,7 @@
         {
           "matchDepTypes": ["devDependencies"],
           "commitMessagePrefix": "build(deps-dev):",
-          "labels": ["build", "deps-dev"]
+          "labels": ["dependencies", "build", "deps-dev"]
         }
       ]
     }
