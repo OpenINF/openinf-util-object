@@ -1,6 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":gitSignOff", "github>whitesource/merge-confidence:beta"],
+  "extends": [
+    "config:base",
+    ":gitSignOff",
+    "github>whitesource/merge-confidence:beta"
+  ],
   "lockFileMaintenance": { "enabled": true },
   "postUpdateOptions": ["npmDedupe"],
   "platformCommit": true,
