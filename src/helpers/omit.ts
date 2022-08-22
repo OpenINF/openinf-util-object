@@ -1,13 +1,13 @@
 import type { ESPropertyKey } from '../types';
 
 /**
- * Returns a partial copy of an object omitting the keys specified. We do not copy.
+ * Returns a partial copy of an object omitting the keys specified.
  *
+ * @nosideeffects The original object is not modified if provided.
  * @template T
  * @param opt_originalObject An object to remove properties from. The default value is an empty object literal.
  * @param opt_keysToOmit The list of property keys to remove from the original Object. The default value is an empty array.
  * @returns A new object without the omitted keys. An object with the given properties removed.
- *    The original object is not modified if provided.
  */
 export const omit = <T>(
   opt_originalObject: Record<ESPropertyKey, T> = {},
