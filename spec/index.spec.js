@@ -16,7 +16,7 @@
 // limitations under the License.
 //
 
-const object = require('../index.js');
+const object = require('../lib/index.js');
 const { expect } = require('chai');
 
 describe('Object', () => {
