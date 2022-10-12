@@ -32,11 +32,11 @@ const _hasOwn = Object.prototype.hasOwnProperty;
  * @template T
  */
 export function map<T>(opt_initial: T | undefined) {
-  const obj = Object.create(null);
+  const object = Object.create(null);
   if (opt_initial) {
-    Object.assign(obj, opt_initial);
+    Object.assign(object, opt_initial);
   }
-  return obj;
+  return object;
 }
 
 /**
@@ -46,8 +46,8 @@ export function map<T>(opt_initial: T | undefined) {
  * @returns {boolean}
  * @template T
  */
-export function hasOwn<T>(obj: T, key: string) {
-  return _hasOwn.call(obj, key);
+export function hasOwn<T>(object: T, key: string) {
+  return _hasOwn.call(object, key);
 }
 
 /**
@@ -57,12 +57,11 @@ export function hasOwn<T>(obj: T, key: string) {
  * @param {string} key
  * @returns {unknown}
  */
-export function ownProperty(obj: Record<string, number | RegExp>, key: string) {
-  if (hasOwn(obj, key)) {
-    return obj[key];
-  } else {
-    return undefined;
-  }
+export function ownProperty(
+  object: Record<string, number | RegExp>,
+  key: string
+) {
+  return hasOwn(object, key) ? object[key] : undefined;
 }
 
 interface ITargetSourceDepth {
@@ -84,10 +83,10 @@ interface ITargetSourceDepth {
  */
 export function deepMerge(target: Object, source: Object, depth = 10): Object {
   // Keep track of seen objects to detect recursive references.
-  const seen: Array<Object> = [];
+  const seen: Object[] = [];
 
   /** @type {!Array<ITargetSourceDepth>} */
-  const queue: Array<ITargetSourceDepth> = [];
+  const queue: ITargetSourceDepth[] = [];
   queue.push({ t: target, s: source, d: 0 });
 
   // BFS to ensure objects don't have recursive references at shallower depths.
@@ -104,7 +103,7 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
       Object.assign(t, s);
       continue;
     }
-    Object.keys(s).forEach((key) => {
+    for (const key of Object.keys(s)) {
       const newValue = s[key];
       // Perform a deep merge IFF both target and source have the same key
       // whose corresponding values are objects.
@@ -112,11 +111,11 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
         const oldValue = t[key];
         if (isObject(newValue) && isObject(oldValue)) {
           queue.push({ t: oldValue, s: newValue, d: d + 1 });
-          return;
+          continue;
         }
       }
       t[key] = newValue;
-    });
+    }
   }
   return target;
 }
@@ -130,7 +129,7 @@ export function objectsEqualShallow(
   o1: Record<string, number | RegExp> | null | undefined,
   o2: Record<string, number | RegExp> | null | undefined
 ): boolean {
-  if (o1 == null || o2 == null) {
+  if (o1 == undefined || o2 == undefined) {
     // Null is only equal to null, and undefined to undefined.
     return o1 === o2;
   }
@@ -160,14 +159,30 @@ export function objectsEqualShallow(
  * @template T,R
  */
 export function memo<T, P extends keyof T>(
-  obj: T,
-  prop: P,
-  factory: (arg0: T, arg1: P) => T[P]
+  object: T,
+  property: P,
+  factory: (argument0: T, argument1: P) => T[P]
 ): T[P] {
-  let result = obj[prop];
+  let result = object[property];
   if (result === undefined) {
-    result = factory(obj, prop);
-    obj[prop] = result;
+    result = factory(object, property);
+    object[property] = result;
   }
   return result;
+}
+
+/**
+ * Validate if a value is an object
+ *
+ * @param {object} source
+ * @returns {Boolean}
+ */
+export function isPlainObject(source: Object): boolean {
+  const typeofSource: string = typeof source;
+  const sourcePrototype: string = Object.prototype.toString.call(source);
+  return (
+    typeofSource === 'object' &&
+    source !== null &&
+    sourcePrototype === '[object Object]'
+  );
 }
