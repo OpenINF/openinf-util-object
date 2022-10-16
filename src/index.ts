@@ -114,7 +114,7 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
           continue;
         }
       }
-      t[key] = newValue;
+      Reflect.set(t, key, newValue);
     }
   }
   return target;
