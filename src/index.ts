@@ -83,7 +83,7 @@ interface ITargetSourceDepth {
  * @throws {Error} If source contains a circular reference.
  * Note: Only nested objects are deep-merged, primitives and arrays are not.
  */
-export function deepMerge(target: Object, source: Object, depth = 10): Object {
+export const deepMerge = (target: object, source: object, depth = 10): object {
   // Keep track of seen objects to detect recursive references.
   const seen: object[] = [];
 
