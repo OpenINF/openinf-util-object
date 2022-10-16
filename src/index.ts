@@ -83,7 +83,7 @@ interface ITargetSourceDepth {
  */
 export function deepMerge(target: Object, source: Object, depth = 10): Object {
   // Keep track of seen objects to detect recursive references.
-  const seen: Array<{}> = [];
+  const seen: object[] = [];
 
   /** @type {!Array<ITargetSourceDepth>} */
   const queue: ITargetSourceDepth[] = [];
