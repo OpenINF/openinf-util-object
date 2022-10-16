@@ -166,7 +166,7 @@ export function memo<T, P extends keyof T>(
   let result = Reflect.get(object, property);
   if (result === undefined) {
     result = factory(object, property);
-    object[property] = result;
+    Reflect.set(object, property, result);
   }
   return result;
 }
