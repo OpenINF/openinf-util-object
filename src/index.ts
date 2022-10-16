@@ -36,7 +36,7 @@ export function map<T>(opt_initial: T | undefined) {
   if (opt_initial) {
     Object.assign(object, opt_initial);
   }
-  return object;
+  return { ...opt_initial };
 }
 
 /**
