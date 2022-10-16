@@ -59,7 +59,7 @@ export function hasOwn<T>(object: T, key: string) {
  */
 export function ownProperty(
   object: Record<string, number | RegExp>,
-  key: string
+  key: string,
 ) {
   return hasOwn(object, key) ? object[key] : undefined;
 }
