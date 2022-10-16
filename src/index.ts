@@ -61,7 +61,7 @@ export function ownProperty(
   object: Record<string, number | RegExp>,
   key: string,
 ) {
-  return hasOwn(object, key) ? object[key] : undefined;
+  return hasOwn(object, key) ? Reflect.get(object, key) : undefined;
 }
 
 interface ITargetSourceDepth {
