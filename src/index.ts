@@ -108,7 +108,7 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
       // Perform a deep merge IFF both target and source have the same key
       // whose corresponding values are objects.
       if (hasOwn(t, key)) {
-        const oldValue = t[key];
+        const oldValue = Reflect.get(t, key);
         if (isObject(newValue) && isObject(oldValue)) {
           queue.push({ t: oldValue, s: newValue, d: d + 1 });
           continue;
