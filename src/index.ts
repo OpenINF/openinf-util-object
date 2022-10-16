@@ -36,6 +36,8 @@ export function map<T>(opt_initial: T | undefined) {
   if (opt_initial) {
     Object.assign(object, opt_initial);
   }
+
+  // FIXME(@DerekNonGeneric): Should we be creating objects w/ null protos?
   return { ...opt_initial };
 }
 
