@@ -48,7 +48,7 @@ export const map = <T>(opt_initial: T | undefined) {
  * @returns {boolean}
  * @template T
  */
-export function hasOwn<T>(object: T, key: string) {
+export const hasOwn = <T>(object: T, key: string): boolean {
   return _hasOwn.call(object, key);
 }
 
