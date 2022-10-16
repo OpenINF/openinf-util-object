@@ -104,7 +104,7 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
       continue;
     }
     for (const key of Object.keys(s)) {
-      const newValue = s[key];
+      const newValue = Reflect.get(s, key);
       // Perform a deep merge IFF both target and source have the same key
       // whose corresponding values are objects.
       if (hasOwn(t, key)) {
