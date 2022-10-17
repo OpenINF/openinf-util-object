@@ -164,7 +164,7 @@ export const memo = <T, P extends keyof T>(
   object: T,
   property: P,
   factory: (argument0: T, argument1: P) => T[P],
-): T[P] {
+): T[P] => {
   let result = Reflect.get(object, property);
   if (result === undefined) {
     result = factory(object, property);
