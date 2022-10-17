@@ -10,12 +10,7 @@
     "test": "npx jasmine"
   },
   "repository": "openinf/util-object",
-  "keywords": [
-    "JavaScript",
-    "Object",
-    "type",
-    "utilities"
-  ],
+  "keywords": ["JavaScript", "Object", "type", "utilities"],
   "author": "The OpenINF Authors",
   "license": "MIT",
   "bugs": "https://github.com/openinf/util-object/issues",
