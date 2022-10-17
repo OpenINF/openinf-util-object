@@ -31,12 +31,14 @@ const _hasOwn = Object.prototype.hasOwnProperty;
  * @returns {T}
  * @template T
  */
-export function map<T>(opt_initial: T | undefined) {
-  const obj = Object.create(null);
+export const map = <T>(opt_initial: T | null | undefined): object => {
+  const object = Object.create(null);
   if (opt_initial) {
-    Object.assign(obj, opt_initial);
+    Object.assign(object, opt_initial);
   }
-  return obj;
+
+  // FIXME(@DerekNonGeneric): Should we be creating objects w/ null protos?
+  return { ...opt_initial };
 }
 
 /**
@@ -46,8 +48,8 @@ export function map<T>(opt_initial: T | undefined) {
  * @returns {boolean}
  * @template T
  */
-export function hasOwn<T>(obj: T, key: string) {
-  return _hasOwn.call(obj, key);
+export const hasOwn = <T>(object: T, key: string): boolean => {
+  return _hasOwn.call(object, key);
 }
 
 /**
@@ -57,42 +59,43 @@ export function hasOwn<T>(obj: T, key: string) {
  * @param {string} key
  * @returns {unknown}
  */
-export function ownProperty(obj: Record<string, number | RegExp>, key: string) {
-  if (hasOwn(obj, key)) {
-    return obj[key];
-  } else {
-    return undefined;
-  }
+export const ownProperty = (
+  object: Record<string, number | RegExp>,
+  key: string,
+): unknown => {
+  return hasOwn(object, key) ? Reflect.get(object, key) : undefined;
 }
 
-interface ITargetSourceDepth {
-  t: Object;
-  s: Object;
+/** @typedef {{t: object, s: object, d: number}} DeepMergeTuple */
+type DeepMergeTuple = {
+  t: object;
+  s: object;
   d: number;
 }
 
 /**
  * Deep merges source into target.
  *
- * @param {!Object} target
- * @param {!Object} source
- * @param {number} depth The maximum merge depth. If exceeded, Object.assign
- *                       will be used instead.
- * @returns {!Object}
+ * @param {!object} target
+ * @param {!object} source
+ * @param {!number} depth The maximum merge depth. If exceeded, `Object.assign`
+ *                        will be used instead.
+ * @return {!object}
  * @throws {Error} If source contains a circular reference.
  * Note: Only nested objects are deep-merged, primitives and arrays are not.
  */
-export function deepMerge(target: Object, source: Object, depth = 10): Object {
+export const deepMerge = (target: object, source: object, depth = 10): object => {
   // Keep track of seen objects to detect recursive references.
-  const seen: Array<Object> = [];
+  /** @type {!object[]} */
+  const seen: object[] = [];
 
-  /** @type {!Array<ITargetSourceDepth>} */
-  const queue: Array<ITargetSourceDepth> = [];
+  /** @type {!DeepMergeTuple[]} */
+  const queue: DeepMergeTuple[] = [];
   queue.push({ t: target, s: source, d: 0 });
 
   // BFS to ensure objects don't have recursive references at shallower depths.
   while (queue.length > 0) {
-    const { t, s, d } = map(queue.shift());
+    const { t, s, d } = /** @type {!DeepMergeTuple} */ Object(queue.shift());
     if (seen.includes(s)) {
       throw new Error('Source object has a circular reference.');
     }
@@ -104,19 +107,19 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
       Object.assign(t, s);
       continue;
     }
-    Object.keys(s).forEach((key) => {
-      const newValue = s[key];
+    for (const key of Object.keys(s)) {
+      const newValue = Reflect.get(s, key);
       // Perform a deep merge IFF both target and source have the same key
       // whose corresponding values are objects.
       if (hasOwn(t, key)) {
-        const oldValue = t[key];
+        const oldValue = Reflect.get(t, key);
         if (isObject(newValue) && isObject(oldValue)) {
           queue.push({ t: oldValue, s: newValue, d: d + 1 });
-          return;
+          continue;
         }
       }
-      t[key] = newValue;
-    });
+      Reflect.set(t, key, newValue);
+    }
   }
   return target;
 }
@@ -126,11 +129,11 @@ export function deepMerge(target: Object, source: Object, depth = 10): Object {
  * @param {!Record<string, number | RegExp> | null | undefined} o2
  * @returns {boolean}
  */
-export function objectsEqualShallow(
+export const objectsEqualShallow = (
   o1: Record<string, number | RegExp> | null | undefined,
   o2: Record<string, number | RegExp> | null | undefined
-): boolean {
-  if (o1 === null || o2 === null) {
+): boolean => {
+  if (o1 == undefined || o2 == undefined) {
     // Null is only equal to null, and undefined to undefined.
     return o1 === o2;
   }
@@ -153,21 +156,21 @@ export function objectsEqualShallow(
  * updates the object originally passed, and returns the value that was returned
  * by the factory function.
  *
- * @param {T} obj
- * @param {string} prop
+ * @param {T extends object} object
+ * @param {string} property
  * @param {function(T, string):R} factory
  * @returns {R}
- * @template T,R
+ * @template P,T,R
  */
-export function memo<T, P extends keyof T>(
-  obj: T,
-  prop: P,
-  factory: (arg0: T, arg1: P) => T[P]
-): T[P] {
-  let result = obj[prop];
+export const memo = <T extends object, P extends keyof T>(
+  object: T,
+  property: P,
+  factory: (argument0: T, argument1: P) => T[P],
+): T[P] => {
+  let result = Reflect.get(object, property);
   if (result === undefined) {
-    result = factory(obj, prop);
-    obj[prop] = result;
+    result = factory(object, property);
+    Reflect.set(object, property, result);
   }
   return result;
 }
