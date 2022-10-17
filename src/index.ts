@@ -31,7 +31,7 @@ const _hasOwn = Object.prototype.hasOwnProperty;
  * @returns {T}
  * @template T
  */
-export const map = <T>(opt_initial: T | undefined) {
+export const map = <T>(opt_initial: T | undefined): object => {
   const object = Object.create(null);
   if (opt_initial) {
     Object.assign(object, opt_initial);
