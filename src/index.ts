@@ -39,7 +39,7 @@ export const map = <T>(opt_initial: T | null | undefined): object => {
 
   // FIXME(@DerekNonGeneric): Should we be creating objects w/ null protos?
   return { ...opt_initial };
-}
+};
 
 /**
  * Checks if the given key is a property in the map.
@@ -50,7 +50,7 @@ export const map = <T>(opt_initial: T | null | undefined): object => {
  */
 export const hasOwn = <T>(object: T, key: string): boolean => {
   return _hasOwn.call(object, key);
-}
+};
 
 /**
  * Returns obj[key] iff key is obj's own property (is not inherited).
@@ -61,17 +61,17 @@ export const hasOwn = <T>(object: T, key: string): boolean => {
  */
 export const ownProperty = (
   object: Record<string, number | RegExp>,
-  key: string,
+  key: string
 ): unknown => {
   return hasOwn(object, key) ? Reflect.get(object, key) : undefined;
-}
+};
 
 /** @typedef {{t: object, s: object, d: number}} DeepMergeTuple */
 type DeepMergeTuple = {
   t: object;
   s: object;
   d: number;
-}
+};
 
 /**
  * Deep merges source into target.
@@ -84,7 +84,11 @@ type DeepMergeTuple = {
  * @throws {Error} If source contains a circular reference.
  * Note: Only nested objects are deep-merged, primitives and arrays are not.
  */
-export const deepMerge = (target: object, source: object, depth = 10): object => {
+export const deepMerge = (
+  target: object,
+  source: object,
+  depth = 10
+): object => {
   // Keep track of seen objects to detect recursive references.
   /** @type {!object[]} */
   const seen: object[] = [];
@@ -122,7 +126,7 @@ export const deepMerge = (target: object, source: object, depth = 10): object =>
     }
   }
   return target;
-}
+};
 
 /**
  * @param {!Record<string, number | RegExp> | null | undefined} o1
@@ -148,7 +152,7 @@ export const objectsEqualShallow = (
     }
   }
   return true;
-}
+};
 
 /**
  * Takes an object, a property name, and a factory function. If the value of
@@ -165,7 +169,7 @@ export const objectsEqualShallow = (
 export const memo = <T extends object, P extends keyof T>(
   object: T,
   property: P,
-  factory: (argument0: T, argument1: P) => T[P],
+  factory: (argument0: T, argument1: P) => T[P]
 ): T[P] => {
   let result = Reflect.get(object, property);
   if (result === undefined) {
@@ -173,4 +177,4 @@ export const memo = <T extends object, P extends keyof T>(
     Reflect.set(object, property, result);
   }
   return result;
-}
+};
