@@ -31,7 +31,7 @@ const _hasOwn = Object.prototype.hasOwnProperty;
  * @returns {T}
  * @template T
  */
-export const map = <T>(opt_initial: T | undefined): object => {
+export const map = <T>(opt_initial: T | null | undefined): object => {
   const object = Object.create(null);
   if (opt_initial) {
     Object.assign(object, opt_initial);
@@ -66,34 +66,36 @@ export const ownProperty = (
   return hasOwn(object, key) ? Reflect.get(object, key) : undefined;
 }
 
-interface ITargetSourceDepth {
-  t: Object;
-  s: Object;
+/** @typedef {{t: object, s: object, d: number}} DeepMergeTuple */
+type DeepMergeTuple = {
+  t: object;
+  s: object;
   d: number;
 }
 
 /**
  * Deep merges source into target.
  *
- * @param {!Object} target
- * @param {!Object} source
- * @param {number} depth The maximum merge depth. If exceeded, Object.assign
- *                       will be used instead.
- * @returns {!Object}
+ * @param {!object} target
+ * @param {!object} source
+ * @param {!number} depth The maximum merge depth. If exceeded, `Object.assign`
+ *                        will be used instead.
+ * @return {!object}
  * @throws {Error} If source contains a circular reference.
  * Note: Only nested objects are deep-merged, primitives and arrays are not.
  */
 export const deepMerge = (target: object, source: object, depth = 10): object => {
   // Keep track of seen objects to detect recursive references.
+  /** @type {!object[]} */
   const seen: object[] = [];
 
-  /** @type {!Array<ITargetSourceDepth>} */
-  const queue: ITargetSourceDepth[] = [];
+  /** @type {!DeepMergeTuple[]} */
+  const queue: DeepMergeTuple[] = [];
   queue.push({ t: target, s: source, d: 0 });
 
   // BFS to ensure objects don't have recursive references at shallower depths.
   while (queue.length > 0) {
-    const { t, s, d } = map(queue.shift());
+    const { t, s, d } = /** @type {!DeepMergeTuple} */ Object(queue.shift());
     if (seen.includes(s)) {
       throw new Error('Source object has a circular reference.');
     }
@@ -154,13 +156,13 @@ export const objectsEqualShallow = (
  * updates the object originally passed, and returns the value that was returned
  * by the factory function.
  *
- * @param {T} obj
- * @param {string} prop
+ * @param {T extends object} object
+ * @param {string} property
  * @param {function(T, string):R} factory
  * @returns {R}
- * @template T,R
+ * @template P,T,R
  */
-export const memo = <T, P extends keyof T>(
+export const memo = <T extends object, P extends keyof T>(
   object: T,
   property: P,
   factory: (argument0: T, argument1: P) => T[P],
