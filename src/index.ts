@@ -59,7 +59,7 @@ export const hasOwn = <T>(object: T, key: string): boolean {
  * @param {string} key
  * @returns {unknown}
  */
-export function ownProperty(
+export const ownProperty = (
   object: Record<string, number | RegExp>,
   key: string,
 ): unknown => {
