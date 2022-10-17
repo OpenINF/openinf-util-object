@@ -127,7 +127,7 @@ export const deepMerge = (target: object, source: object, depth = 10): object =>
  * @param {!Record<string, number | RegExp> | null | undefined} o2
  * @returns {boolean}
  */
-export function objectsEqualShallow(
+export const objectsEqualShallow = (
   o1: Record<string, number | RegExp> | null | undefined,
   o2: Record<string, number | RegExp> | null | undefined
 ): boolean => {
