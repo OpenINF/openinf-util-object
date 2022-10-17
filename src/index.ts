@@ -62,7 +62,7 @@ export const hasOwn = <T>(object: T, key: string): boolean {
 export function ownProperty(
   object: Record<string, number | RegExp>,
   key: string,
-) {
+): unknown => {
   return hasOwn(object, key) ? Reflect.get(object, key) : undefined;
 }
 
