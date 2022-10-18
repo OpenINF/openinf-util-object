@@ -1,2 +1,5 @@
-.vscode
-node_modules
+.vscode/
+node_modules/
+lib/**/*
+.DS_Store
+tsconfig.tsbuildinfo
