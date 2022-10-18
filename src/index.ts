@@ -34,11 +34,13 @@ const _hasOwn = Object.prototype.hasOwnProperty;
 export const map = <T>(opt_initial: T | null | undefined): object => {
   const object = Object.create(null);
   if (opt_initial) {
-    Object.assign(object, opt_initial);
+    Object.assign(object, { ...opt_initial });
   }
 
-  // FIXME(@DerekNonGeneric): Should we be creating objects w/ null protos?
-  return { ...opt_initial };
+  // FIXME(@DerekNonGeneric): Should we be returning these newly-created
+  // objects w/ `null` prototypes instead of `undefined` ones, (which is
+  // what had previously been doing and are still currently testing for)?
+  return object;
 };
 
 /**
