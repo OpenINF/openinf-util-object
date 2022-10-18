@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "npm run compile-src && npm run compile-doc",
     "compile-src": "tsc --project ./",
-    "compile-doc": "jsdoc2md --template README.hbs --files lib/index.js > ./README.md",
+    "compile-doc": "",
     "test": "npx jasmine"
   },
   "repository": "openinf/util-object",
@@ -34,7 +34,6 @@
     "eslint-plugin-unicorn": "44.0.2",
     "eslint-plugin-wix-editor": "3.3.0",
     "jasmine": "4.4.0",
-    "jsdoc-to-markdown": "7.1.1",
     "prettier": "2.7.1",
     "typescript": "4.8.4"
   },
