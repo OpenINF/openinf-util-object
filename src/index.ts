@@ -69,11 +69,11 @@ export const ownProperty = (
 };
 
 /** @typedef {{t: object, s: object, d: number}} DeepMergeTuple */
-type DeepMergeTuple = {
+interface DeepMergeTuple {
   t: object;
   s: object;
   d: number;
-};
+}
 
 /**
  * Deep merges source into target.
@@ -101,7 +101,9 @@ export const deepMerge = (
 
   // BFS to ensure objects don't have recursive references at shallower depths.
   while (queue.length > 0) {
-    const { t, s, d } = /** @type {!DeepMergeTuple} */ Object(queue.shift());
+    const { t, s, d } = /** @type {!DeepMergeTuple} */ new Object(
+      queue.shift()
+    );
     if (seen.includes(s)) {
       throw new Error('Source object has a circular reference.');
     }
