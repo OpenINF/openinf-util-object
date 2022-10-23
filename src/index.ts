@@ -135,7 +135,7 @@ export const deepMerge = (
 export const objectsEqualShallow = (
   o1: Record<string, number | RegExp> | null | undefined,
   o2: Record<string, number | RegExp> | null | undefined
-): boolean {
+): boolean => {
   if (o1 == undefined || o2 == undefined) {
     // Null is only equal to null, and undefined to undefined.
     return o1 === o2;
