@@ -31,17 +31,13 @@ const _hasOwn = Object.prototype.hasOwnProperty;
  * @returns {T}
  * @template T
  */
-export const map = <T>(opt_initial: T | null | undefined): object => {
+export function map<T>(opt_initial: T | undefined) {
   const object = Object.create(null);
   if (opt_initial) {
-    Object.assign(object, { ...opt_initial });
+    Object.assign(object, opt_initial);
   }
-
-  // FIXME(@DerekNonGeneric): Should we be returning these newly-created
-  // objects w/ `null` prototypes instead of `undefined` ones, (which is
-  // what had previously been doing and are still currently testing for)?
   return object;
-};
+}
 
 /**
  * Checks if the given key is a property in the map.
@@ -50,9 +46,9 @@ export const map = <T>(opt_initial: T | null | undefined): object => {
  * @returns {boolean}
  * @template T
  */
-export const hasOwn = <T>(object: T, key: string): boolean => {
+export function hasOwn<T>(object: T, key: string) {
   return _hasOwn.call(object, key);
-};
+}
 
 /**
  * Returns obj[key] iff key is obj's own property (is not inherited).
@@ -61,19 +57,19 @@ export const hasOwn = <T>(object: T, key: string): boolean => {
  * @param {string} key
  * @returns {unknown}
  */
-export const ownProperty = (
+export function ownProperty(
   object: Record<string, number | RegExp>,
   key: string
-): unknown => {
-  return hasOwn(object, key) ? Reflect.get(object, key) : undefined;
-};
+) {
+  return hasOwn(object, key) ? object[key] : undefined;
+}
 
 /** @typedef {{t: object, s: object, d: number}} DeepMergeTuple */
-type DeepMergeTuple = {
+interface DeepMergeTuple {
   t: object;
   s: object;
   d: number;
-};
+}
 
 /**
  * Deep merges source into target.
@@ -92,16 +88,17 @@ export const deepMerge = (
   depth = 10
 ): object => {
   // Keep track of seen objects to detect recursive references.
-  /** @type {!object[]} */
-  const seen: object[] = [];
+  const seen: Object[] = [];
 
-  /** @type {!DeepMergeTuple[]} */
-  const queue: DeepMergeTuple[] = [];
+  /** @type {!Array<ITargetSourceDepth>} */
+  const queue: ITargetSourceDepth[] = [];
   queue.push({ t: target, s: source, d: 0 });
 
   // BFS to ensure objects don't have recursive references at shallower depths.
   while (queue.length > 0) {
-    const { t, s, d } = /** @type {!DeepMergeTuple} */ Object(queue.shift());
+    const { t, s, d } = /** @type {!DeepMergeTuple} */ new Object(
+      queue.shift()
+    );
     if (seen.includes(s)) {
       throw new Error('Source object has a circular reference.');
     }
@@ -114,7 +111,7 @@ export const deepMerge = (
       continue;
     }
     for (const key of Object.keys(s)) {
-      const newValue = Reflect.get(s, key);
+      const newValue = s[key];
       // Perform a deep merge IFF both target and source have the same key
       // whose corresponding values are objects.
       if (hasOwn(t, key)) {
@@ -124,7 +121,7 @@ export const deepMerge = (
           continue;
         }
       }
-      Reflect.set(t, key, newValue);
+      t[key] = newValue;
     }
   }
   return target;
@@ -180,3 +177,18 @@ export const memo = <T extends object, P extends keyof T>(
   }
   return result;
 };
+/**
+ * Check if a value is an object
+ *
+ * @param {object} source
+ * @returns {Boolean}
+ */
+export function isPlainObject(source: Object): boolean {
+  const typeofSource: string = typeof source;
+  const sourcePrototype: string = Object.prototype.toString.call(source);
+  return (
+    typeofSource === 'object' &&
+    source !== null &&
+    sourcePrototype === '[object Object]'
+  );
+}
