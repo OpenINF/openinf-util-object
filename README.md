@@ -2,7 +2,7 @@
 
 # @openinf/util-object
 
-Common JavaScript Object type-related utilities
+Common JavaScript object type-related utilities
 
 <br />
 
