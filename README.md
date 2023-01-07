@@ -17,7 +17,7 @@ Common JavaScript object type-related utilities
 <br />
 
 _The high-level goal of `@openinf/util-object` is to serve as a Node.js package
-containing utilities for **common JavaScript object type-related utilities**
+containing utilities for **common JavaScript object type-related operations**
 primarily enabling users to perform comparisons and analyze object contents. As
 is the case with any software project in continuous development, omissions and
 errors may exist, for which contributions are welcome._
