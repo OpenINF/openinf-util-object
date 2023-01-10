@@ -276,8 +276,8 @@ factory function.
 
 <!-- Give a ⭐️ if this project helped you! -->
 
-If you like the project, [give it a star ⭐️], it will be a great encouragement
-to us.
+If you like the project or want to bookmark it, [give it a star ⭐️]; it will
+greatly encourage us.
 
 <br /><br />
 
