@@ -294,7 +294,7 @@ greatly encourage us.
 <!-- prettier-ignore-start -->
 <!-- PRESERVE LINK DEFINITION LABEL CASE - START -->
 
-[give it a star ⭐️]: https://github.com/openinf/util-object/stargazers
+[give it a star ⭐️]: https://github.com/openinf/openinf-util-object/stargazers
 
 [deepscan-badge]: https://badgen.net/deepscan/grade/team/18447/project/21802/branch/634013?icon=deepscan 'DeepScan grade'
 [deepscan-url]: https://deepscan.io/dashboard#view=project&tid=18447&pid=21802&bid=634013 'DeepScan grade'
