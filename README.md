@@ -291,8 +291,6 @@ greatly encourage us.
 
 </div>
 
-[give it a star ⭐️]: https://github.com/openinf/openinf-util-object/stargazers
-
 [deepscan-badge]: https://badgen.net/deepscan/grade/team/18447/project/21802/branch/634013?icon=deepscan 'DeepScan grade'
 [deepscan-url]: https://deepscan.io/dashboard#view=project&tid=18447&pid=21802&bid=634013 'DeepScan grade'
 [deepsource-badge]: https://deepsource.io/gh/openinf/openinf-util-object.svg/?label=active+issues&show_trend=true&token=koqA5qbYRUzwMD4h3D8URZoT
@@ -301,6 +299,7 @@ greatly encourage us.
 [conventional-commits-url]: https://www.conventionalcommits.org 'Commit Style: Conventional Commits'
 [fossa-badge]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Fopeninf%2Futil-object.svg?type=small 'FOSSA Status'
 [fossa-url]: https://app.fossa.com/projects/git%2Bgithub.com%2Fopeninf%2Futil-object?ref=badge_small 'FOSSA Status'
+[give it a star ⭐️]: https://github.com/OpenINF/openinf-util-object/stargazers
 [license-badge--shields]: https://img.shields.io/badge/license-MIT-blue.svg?logo=github 'License: MIT'
 [license-badge-url]: https://spdx.org/licenses/MIT.html 'License: MIT'
 [matrix-badge--shields]: https://img.shields.io/badge/matrix-join%20chat-%2346BC99?logo=matrix 'Chat on Matrix'
