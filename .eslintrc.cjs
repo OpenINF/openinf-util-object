@@ -37,8 +37,7 @@ module.exports = {
     'prettier',
     'simple-import-sort',
     'etc',
-    'promise',
-    'only-warn',
+    'promise'
   ],
   rules: {
     // core
