@@ -7,7 +7,6 @@ Common JavaScript object type-related utilities
 <br />
 
 [!['View on npm'][npm-badge--shields]][npm-badge-url]
-[!['DeepScan grade'][deepscan-badge]][deepscan-url]
 [!['License: MIT'][license-badge--shields]][license-badge-url]
 
 </div>
@@ -62,7 +61,6 @@ errors may exist, for which contributions are welcome._
 
 [![Code Style: Prettier][prettier-badge]][prettier-url]
 [![Commit Style: Conventional Commits][conventional-commits-badge]][conventional-commits-url]
-[![Active Issues: DeepSource][deepsource-badge]][deepsource-url]
 [![Chat on Matrix][matrix-badge--shields]][matrix-url]
 
 </div>
@@ -289,10 +287,6 @@ greatly encourage us.
 
 </div>
 
-[deepscan-badge]: https://badgen.net/deepscan/grade/team/18447/project/21802/branch/634013?icon=deepscan 'DeepScan grade'
-[deepscan-url]: https://deepscan.io/dashboard#view=project&tid=18447&pid=21802&bid=634013 'DeepScan grade'
-[deepsource-badge]: https://deepsource.io/gh/openinf/openinf-util-object.svg/?label=active+issues&show_trend=true&token=koqA5qbYRUzwMD4h3D8URZoT
-[deepsource-url]: https://deepsource.io/gh/openinf/openinf-util-object/?ref=repository-badge 'Active Issues: DeepSource'
 [conventional-commits-badge]: https://img.shields.io/badge/commit%20style-Conventional-%23fa6673?logoColor=white&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PHBhdGggc3R5bGU9ImZpbGw6ICNGRkYiIGQ9Ik0xNSwyQTEzLDEzLDAsMSwxLDIsMTUsMTMsMTMsMCwwLDEsMTUsMm0wLTJBMTUsMTUsMCwxLDAsMzAsMTUsMTUsMTUsMCwwLDAsMTUsMFoiLz48L3N2Zz4K 'Commit Style: Conventional Commits'
 [conventional-commits-url]: https://www.conventionalcommits.org 'Commit Style: Conventional Commits'
 [give it a star ⭐️]: https://github.com/OpenINF/openinf-util-object/stargazers
