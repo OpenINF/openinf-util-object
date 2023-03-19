@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# @openinf/util-object
+## @openinf/util-object
 
 Common JavaScript object type-related utilities
 
@@ -73,7 +73,7 @@ errors may exist, for which contributions are welcome._
 
 <br />
 
-## Installation
+### Installation
 
 `@openinf/util-object` runs on
 [supported versions of Node.js](#platform--node-js-lts) and is available via
@@ -109,7 +109,7 @@ for more information.</sup>
 yarn add @openinf/util-object
 ```
 
-## Usage
+### Usage
 
 ```ts
 import { hasOwn } from '@openinf/util-object';
@@ -129,7 +129,8 @@ export class GhFileImporter {
 
 <br />
 
-## Functions
+<details>
+	<summary><h3>Functions</h3></summary>
 
 <dl>
 <dt><a href="#map">map([opt_initial])</a> ⇒ <code>T</code></dt>
@@ -264,13 +265,17 @@ factory function.
 
 <br /><br />
 
+</details>
+
+<br />
+
 ---
 
 <br />
 
 <div align="center">
 
-## Show Your Support
+### Show Your Support
 
 <!-- Give a ⭐️ if this project helped you! -->
 
