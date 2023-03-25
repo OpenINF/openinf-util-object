@@ -22,7 +22,7 @@
   "homepage": "https://github.com/openinf/util-object#readme",
   "description": "Common JavaScript Object type-related utilities",
   "devDependencies": {
-    "@types/node": "18.15.7",
+    "@types/node": "18.15.8",
     "@typescript-eslint/eslint-plugin": "5.56.0",
     "@typescript-eslint/parser": "5.56.0",
     "chai": "4.3.7",
