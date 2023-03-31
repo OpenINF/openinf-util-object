@@ -39,7 +39,7 @@
     "eslint-plugin-wix-editor": "3.3.0",
     "jasmine": "4.6.0",
     "prettier": "2.8.7",
-    "typescript": "5.0.2"
+    "typescript": "5.0.3"
   },
   "dependencies": {
     "@openinf/util-types": "2.1.3"
