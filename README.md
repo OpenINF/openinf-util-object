@@ -67,7 +67,21 @@ errors may exist, for which contributions are welcome._
 
 </div>
 
+<br /><br />
+
+---
+
 <br />
+
+### Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [Contributing](#contributing)
+- [License](#license)
+
+<br /><br />
 
 ---
 
@@ -109,6 +123,8 @@ for more information.</sup>
 yarn add @openinf/util-object
 ```
 
+<br /><br />
+
 ### Usage
 
 ```ts
@@ -123,14 +139,10 @@ export class GhFileImporter {
 }
 ```
 
-<br />
-
----
-
-<br />
+<br /><br />
 
 <details>
-	<summary><h3>Functions</h3></summary>
+	<summary><h3>API</h3></summary>
 
 <dl>
 <dt><a href="#map">map([opt_initial])</a> ⇒ <code>T</code></dt>
