@@ -173,7 +173,7 @@ by the factory function.</p>
 
 <a name="map"></a>
 
-## map([opt_initial]) ⇒ <code>T</code>
+#### map([opt_initial]) ⇒ <code>T</code>
 
 Returns a map-like object. If `opt_initial` is provided, copies its own
 properties into the newly created object.
@@ -186,7 +186,7 @@ properties into the newly created object.
 
 <a name="hasOwn"></a>
 
-## hasOwn(obj, key) ⇒ <code>boolean</code>
+#### hasOwn(obj, key) ⇒ <code>boolean</code>
 
 Checks if the given key is a property in the map.
 
@@ -199,7 +199,7 @@ Checks if the given key is a property in the map.
 
 <a name="ownProperty"></a>
 
-## ownProperty(obj, key) ⇒ <code>unknown</code>
+#### ownProperty(obj, key) ⇒ <code>unknown</code>
 
 Returns obj[key] iff key is obj's own property (is not inherited). Otherwise,
 returns undefined.
@@ -213,7 +213,7 @@ returns undefined.
 
 <a name="deepMerge"></a>
 
-## deepMerge(target, source, depth) ⇒ <code>Object</code>
+#### deepMerge(target, source, depth) ⇒ <code>Object</code>
 
 Deep merges source into target.
 
@@ -231,12 +231,12 @@ Deep merges source into target.
 
 <a name="deepMerge..queue"></a>
 
-### deepMerge~queue : <code>Array.&lt;ITargetSourceDepth&gt;</code>
+##### deepMerge~queue : <code>Array.&lt;ITargetSourceDepth&gt;</code>
 
 **Kind**: inner constant of [<code>deepMerge</code>](#deepMerge)  
 <a name="omit"></a>
 
-## omit(o, props) ⇒ <code>Record.&lt;string, (number\|RegExp)&gt;</code>
+#### omit(o, props) ⇒ <code>Record.&lt;string, (number\|RegExp)&gt;</code>
 
 **Kind**: global function  
 **Returns**: <code>Record.&lt;string, (number\|RegExp)&gt;</code> - An object
@@ -249,7 +249,7 @@ with the given properties removed.
 
 <a name="objectsEqualShallow"></a>
 
-## objectsEqualShallow(o1, o2) ⇒ <code>boolean</code>
+#### objectsEqualShallow(o1, o2) ⇒ <code>boolean</code>
 
 **Kind**: global function
 
@@ -260,7 +260,7 @@ with the given properties removed.
 
 <a name="memo"></a>
 
-## memo(obj, prop, factory) ⇒ <code>R</code>
+#### memo(obj, prop, factory) ⇒ <code>R</code>
 
 Takes an object, a property name, and a factory function. If the value of the
 property is undefined, it generates a value with the factory function, updates
