@@ -1,26 +1,26 @@
 {
   "name": "@openinf/util-object",
-  "version": "2.0.1",
+  "version": "0.0.0-development",
+  "description": "Common JavaScript Object type-related utilities",
+  "packageManager": "pnpm@8.2.0",
   "engines": {
-    "node": "^14.15.0 || ^16.13.0 || ^18.12.0",
-    "npm": "^6.14.8 || ^8.1.0 || ^8.19.2 || ^9.0.0",
-    "npx": "^6.14.8 || ^8.1.0 || ^8.19.2 || ^9.0.0"
+    "node": "^16.13.0"
   },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "keywords": ["JavaScript", "Object", "type", "utilities"],
+  "repository": "OpenINF/openinf-util-object",
+  "license": "MIT OR Apache-2.0",
+  "author": "The OpenINF Authors",
+  "directories": {
+    "lib": "lib",
+    "doc": "doc",
+    "test": "test"
+  },
   "scripts": {
     "prepare": "npm run compile-src && npm run compile-doc",
     "compile-src": "tsc --project ./",
     "compile-doc": "",
     "test": "npx jasmine"
   },
-  "repository": "openinf/util-object",
-  "keywords": ["JavaScript", "Object", "type", "utilities"],
-  "author": "The OpenINF Authors",
-  "license": "MIT",
-  "bugs": "https://github.com/openinf/util-object/issues",
-  "homepage": "https://github.com/openinf/util-object#readme",
-  "description": "Common JavaScript Object type-related utilities",
   "devDependencies": {
     "@types/node": "18.15.11",
     "@typescript-eslint/eslint-plugin": "5.58.0",
