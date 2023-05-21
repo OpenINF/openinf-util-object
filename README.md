@@ -1,29 +1,30 @@
 [![Orange banner indicating a preview software component][release-level-banner--unstable]](##)
 
+<br />
+
 <!-- markdownlint-disable-next-line line-length -->
 <a href="##"><img src="https://raw.githubusercontent.com/OpenINF/openinf.github.io/live/assets/img/svg/logogram-color.svg?sanitize=true" alt="OpenINF logo" title="OpenINF" align="right" height="96" width="96" /></a>
 
-<div align="center">
+<div align="left">
 
-## @openinf/util-object
+## `@openinf/util-object`
 
-Common JavaScript object type-related utilities
+> Common JavaScript object type-related utilities
 
 <br />
 
 [!['View on npm'][npm-badge--shields]][npm-badge-url]
 [!['License: MIT/Apache-2.0'][license-badge--shields]][license-badge-url]
-!['Project Status: Under construction'][project-status-badge]
 
 </div>
 
 <br />
 
-_The high-level goal of `@openinf/util-object` is to serve as a Node.js package
+The high-level goal of `@openinf/util-object` is to serve as a Node.js package
 containing utilities for **common JavaScript object type-related operations**
 primarily enabling users to perform comparisons and analyze object contents. As
 is the case with any software project in continuous development, omissions and
-errors may exist, for which [contributions are welcome](#contributing)._
+errors may exist, for which [contributions are welcome](#contributing).
 
 <br />
 
