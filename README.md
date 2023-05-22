@@ -173,7 +173,7 @@ Otherwise, returns undefined.</p>
 <dt><a href="#deepMerge">deepMerge(target, source, depth)</a> ⇒ <code>Object</code></dt>
 <dd><p>Deep merges source into target.</p>
 </dd>
-<dt><a href="#omit">omit(o, props)</a> ⇒ <code>Record.&lt;string, (number|RegExp)&gt;</code></dt>
+<dt><a href="#omit">omit(o, props)</a> ⇒ <code>Record&lt;string, (number|RegExp)&gt;</code></dt>
 <dd></dd>
 <dt><a href="#objectsEqualShallow">objectsEqualShallow(o1, o2)</a> ⇒ <code>boolean</code></dt>
 <dd></dd>
@@ -222,7 +222,7 @@ returns undefined.
 
 | Param | Type                                                 |
 | ----- | ---------------------------------------------------- |
-| obj   | <code>Record.&lt;string, (number\|RegExp)&gt;</code> |
+| obj   | <code>Record&lt;string, (number\|RegExp)&gt;</code> |
 | key   | <code>string</code>                                  |
 
 <a name="deepMerge"></a>
@@ -245,21 +245,21 @@ Deep merges source into target.
 
 <a name="deepMerge..queue"></a>
 
-##### deepMerge~queue : <code>Array.&lt;ITargetSourceDepth&gt;</code>
+##### deepMerge~queue : <code>Array&lt;ITargetSourceDepth&gt;</code>
 
 **Kind**: inner constant of [<code>deepMerge</code>](#deepMerge)  
 <a name="omit"></a>
 
-#### omit(o, props) ⇒ <code>Record.&lt;string, (number\|RegExp)&gt;</code>
+#### omit(o, props) ⇒ <code>Record&lt;string, (number\|RegExp)&gt;</code>
 
 **Kind**: global function  
-**Returns**: <code>Record.&lt;string, (number\|RegExp)&gt;</code> - An object
+**Returns**: <code>Record&lt;string, (number\|RegExp)&gt;</code> - An object
 with the given properties removed.
 
 | Param | Type                                                 | Description                                     |
 | ----- | ---------------------------------------------------- | ----------------------------------------------- |
-| o     | <code>Record.&lt;string, (number\|RegExp)&gt;</code> | An object to remove properties from.            |
-| props | <code>Array.&lt;string&gt;</code>                    | A list of properties to remove from the Object. |
+| o     | <code>Record&lt;string, (number\|RegExp)&gt;</code> | An object to remove properties from.            |
+| props | <code>Array&lt;string&gt;</code>                    | A list of properties to remove from the Object. |
 
 <a name="objectsEqualShallow"></a>
 
@@ -269,8 +269,8 @@ with the given properties removed.
 
 | Param | Type                                                                                                 |
 | ----- | ---------------------------------------------------------------------------------------------------- |
-| o1    | <code>!Record.&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> |
-| o2    | <code>!Record.&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> |
+| o1    | <code>!Record&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> |
+| o2    | <code>!Record&lt;string, (number\|RegExp)&gt;</code> \| <code>null</code> \| <code>undefined</code> |
 
 <a name="memo"></a>
 
