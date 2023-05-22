@@ -155,7 +155,7 @@ export class GhFileImporter {
 
 <br /><br />
 
-<details>
+<details open="">
 	<summary><h3>API</h3></summary>
 
 <dl>
