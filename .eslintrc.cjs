@@ -11,7 +11,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:@typescript-eslint/strict',
-    'plugin:unicorn/recommended',
     'plugin:import/warnings',
     'plugin:regexp/recommended',
     'plugin:etc/recommended',
@@ -30,7 +29,6 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: false,
   },
   plugins: [
-    'unicorn',
     'import',
     'wix-editor',
     '@typescript-eslint',
@@ -55,22 +53,6 @@ module.exports = {
     'wix-editor/prefer-ternary': 1,
     'wix-editor/return-boolean': 1,
     'wix-editor/simplify-boolean-expression': 1,
-    // unicorn
-    'unicorn/prefer-spread': 0,
-    'unicorn/catch-error-name': 0,
-    'unicorn/prefer-node-protocol': 0,
-    'unicorn/prevent-abbreviations': [
-      1,
-      {
-        replacements: {
-          args: false,
-          err: false,
-          prod: false,
-          ref: false,
-          params: false,
-        },
-      },
-    ],
     // import
     'import/max-dependencies': [1, { max: 15 }],
     // simple-import-sort with recomended settings
