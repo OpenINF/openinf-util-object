@@ -3,9 +3,6 @@
   "version": "0.0.0-development",
   "description": "Common JavaScript Object type-related utilities",
   "packageManager": "pnpm@8.6.1",
-  "engines": {
-    "node": "^18.0.0"
-  },
   "keywords": ["JavaScript", "Object", "type", "utilities"],
   "repository": "OpenINF/openinf-util-object",
   "license": "MIT OR Apache-2.0",
