@@ -30,7 +30,6 @@ module.exports = {
   },
   plugins: [
     'import',
-    'wix-editor',
     '@typescript-eslint',
     'prettier',
     'simple-import-sort',
@@ -45,14 +44,6 @@ module.exports = {
     'max-lines': [1, { max: 300 }],
     'max-params': [1, { max: 5 }],
     'no-unneeded-ternary': [1],
-    // wix-editor
-    'wix-editor/no-instanceof-array': 1,
-    'wix-editor/no-not-not': 1,
-    'wix-editor/no-unneeded-match': 1,
-    'wix-editor/prefer-filter': 1,
-    'wix-editor/prefer-ternary': 1,
-    'wix-editor/return-boolean': 1,
-    'wix-editor/simplify-boolean-expression': 1,
     // import
     'import/max-dependencies': [1, { max: 15 }],
     // simple-import-sort with recomended settings
