@@ -3,7 +3,12 @@
   "version": "0.0.0-development",
   "description": "Common JavaScript Object type-related utilities",
   "packageManager": "pnpm@8.6.1",
-  "keywords": ["JavaScript", "Object", "type", "utilities"],
+  "keywords": [
+    "JavaScript",
+    "Object",
+    "type",
+    "utilities"
+  ],
   "repository": "OpenINF/openinf-util-object",
   "license": "MIT OR Apache-2.0",
   "author": "The OpenINF Authors",
@@ -32,9 +37,9 @@
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-regexp": "1.15.0",
     "eslint-plugin-simple-import-sort": "10.0.0",
-    "eslint-plugin-wix-editor": "3.3.0",
     "jasmine": "5.0.0",
     "prettier": "2.8.8",
+    "tslint-microsoft-contrib": "OpenINF/openinf-tslint-microsoft-contrib#semver:^6.2.0",
     "typescript": "5.1.3"
   },
   "dependencies": {
