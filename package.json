@@ -1,9 +1,10 @@
 {
-  "name": "@openinf/util-object",
+  "name": "@openinf-internal/util-object-monorepo",
+  "private": true,
   "version": "0.0.0-development",
-  "description": "Common JavaScript Object type-related utilities",
+  "description": "Package-based monorepo for @openinf/util-object and friends",
+  "workspaces": ["packages/*"],
   "packageManager": "pnpm@8.6.3",
-  "repository": "OpenINF/openinf-util-object",
   "license": "MIT OR Apache-2.0",
   "author": "The OpenINF Authors",
   "devDependencies": {
